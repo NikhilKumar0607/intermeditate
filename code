@@ -1,0 +1,250 @@
+1) contact form
+<!-- contact-form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      padding: 2rem;
+    }
+    form {
+      background: white;
+      padding: 2rem;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<form>
+  <h2>Contact Us</h2>
+  <input type="text" placeholder="Your Name" required>
+  <input type="email" placeholder="Your Email" required>
+  <input type="text" placeholder="Subject">
+  <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
+
+2) validation form
+<!-- form-validation.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Validation</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f9f9f9;
+      padding: 2rem;
+    }
+    form {
+      max-width: 400px;
+      background: white;
+      padding: 2rem;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    input, button {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border-radius: 5px;
+    }
+    #message {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<form id="contactForm">
+  <h2>Contact Form</h2>
+  <input type="email" id="email" placeholder="Your Email" required>
+  <button type="submit">Submit</button>
+  <p id="message"></p>
+</form>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message');
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if (!emailPattern.test(email)) {
+      message.textContent = "Invalid email format.";
+    } else {
+      message.style.color = "green";
+      message.textContent = "Form submitted successfully!";
+    }
+  });
+</script>
+
+</body>
+</html>
+
+
+3) responsive layout
+<!-- responsive-layout.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Layout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    header {
+      background: teal;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 1rem;
+      padding: 1rem;
+    }
+    nav {
+      background: #eee;
+      padding: 1rem;
+    }
+    main {
+      background: #f9f9f9;
+      padding: 1rem;
+    }
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>My Responsive Page</h1>
+</header>
+
+<div class="container">
+  <nav>
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Contact</li>
+    </ul>
+  </nav>
+  <main>
+    <h2>Welcome</h2>
+    <p>This layout adapts to different screen sizes using CSS Grid.</p>
+  </main>
+</div>
+
+</body>
+</html>
+
+
+4) to do lists
+
+<!-- todo-list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f0f8ff;
+      padding: 2rem;
+    }
+    .todo {
+      max-width: 400px;
+      margin: auto;
+      background: white; 
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    input, button {
+      padding: 0.75rem;
+      width: 100%;
+      margin: 0.5rem 0;
+      border-radius: 5px;
+    }
+    ul {
+      padding: 0;
+      list-style: none;
+    }
+    li {
+      background: #eee;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .delete {
+      background: red;
+      color: white;
+      border: none;
+      padding: 0.25rem 0.5rem;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="todo">
+  <h2>To-Do List</h2>
+  <input type="text" id="taskInput" placeholder="New Task">
+  <button onclick="addTask()">Add Task</button>
+  <ul id="taskList"></ul>
+</div>
+
+<script>
+  function addTask() {
+    const taskInput = document.getElementById('taskInput');
+    const taskList = document.getElementById('taskList');
+
+    if (taskInput.value.trim() !== '') {
+      const li = document.createElement('li');
+      li.textContent = taskInput.value;
+
+      const delBtn = document.createElement('button');
+      delBtn.textContent = 'Delete';
+      delBtn.className = 'delete';
+      delBtn.onclick = () => taskList.removeChild(li);
+
+      li.appendChild(delBtn);
+      taskList.appendChild(li);
+      taskInput.value = '';
+    }
+  }
+</script>
+
+</body>
+</html>
+     
